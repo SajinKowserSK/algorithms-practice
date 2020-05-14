@@ -19,6 +19,7 @@ def sortedSubArray(arr):
         start = start + 1
 
     # if it equals the length - 1 then that means no dips, return None
+
     if start == len(arr)-1:
         return None
 
