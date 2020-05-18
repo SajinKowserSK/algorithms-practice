@@ -3,7 +3,6 @@
 # For example,a = [4,2,0,1,0,3,0] -> [0,0,0,4,1,2,3]
 
 def move(arr):
-
     if len(arr) == 0:
         return arr
 
@@ -15,13 +14,11 @@ def move(arr):
         return arr
 
     i = zeroSpot + 1
-
     while i < len(arr):
         if arr[i] == 0:
             tmp = arr[zeroSpot]
             arr[zeroSpot] = arr[i]
             arr[i] = tmp
-
             zeroSpot = zeroSpot + 1
 
         i = i + 1
