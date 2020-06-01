@@ -29,7 +29,7 @@ class BinaryNode:
                 else:
                     self.left.insertNode(data)
 
-    # def PrintTree(self):
+    # def PrintTreeInOrder(self):
     #     if self.left:
     #         self.left.PrintTree()
     #     print(self.data),
