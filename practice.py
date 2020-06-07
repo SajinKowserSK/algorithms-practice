@@ -20,3 +20,6 @@ def searchInsert(arr, target):
 
 sajin = [1,2,3,4,5,6]
 print(searchInsert(sajin, 2))
+
+
+
