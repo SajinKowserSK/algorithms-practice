@@ -1,0 +1,23 @@
+def subArrTarget(arr, target)
+  if arr is None or len(arr) == 0:
+    return None 
+   
+  sum = 0 
+  myMap = {} 
+  
+  for x in range(0, len(arr)):
+    sum = sum + arr[x]
+    
+    if sum == target:
+      return [0, x]
+      
+     
+    if sum-target in myMap:
+      return [myMap[sum-target]+1, x]
+      
+     myMap[sum] = x
+     
+   return None 
+      
+     
+    
