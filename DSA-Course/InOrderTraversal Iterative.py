@@ -19,14 +19,19 @@ def iterativeInOrder(root):
     curr = root
     while curr is not None or len(stk) > 0:
         if curr is not None:
-            stk.insert(0, curr.getVal())
+            stk.insert(0, curr)
             curr = curr.getLeft()
 
         else:
             front = stk[0]
+
             retList.append(front)
             stk.remove(front)
-            curr = curr.getRight()
+
+            curr = front.getRight()
+
+    for x in range (0, len(retList)):
+        retList[x] = retList[x].getVal()
 
     return retList
 
