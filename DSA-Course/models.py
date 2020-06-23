@@ -7,6 +7,15 @@ class BinaryNode:
         self.left = None
         self.right = None
 
+    def getLeft(self):
+        return self.left
+
+    def getRight(self):
+        return self.right
+
+    def getVal(self):
+        return self.data
+
     def insertNode(self, data):
 
         if self.data == None:
