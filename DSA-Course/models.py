@@ -16,6 +16,7 @@ class BinaryNode:
     def getVal(self):
         return self.data
 
+    # binary search type of insert
     def insertNode(self, data):
 
         if self.data == None:
@@ -38,12 +39,10 @@ class BinaryNode:
                 else:
                     self.left.insertNode(data)
 
-    # def PrintTreeInOrder(self):
-    #     if self.left:
-    #         self.left.PrintTree()
-    #     print(self.data),
-    #     if self.right:
-    #         self.right.PrintTree()
 
+def createTree(lst):
+    root = BinaryNode(lst[0])
+    for x in range (1, len(lst)):
+        root.insertNode(lst[x])
 
-
+    return root
