@@ -1,5 +1,7 @@
 from models import *
 
+# Time complexity of O(n) because every node is visited
+# Space complexity of O(h) on the recursion stack
 root = createTree([4,2,6,3,5,5.5])
 
 def getHeight(root, height):
