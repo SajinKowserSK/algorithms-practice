@@ -16,6 +16,9 @@ class BinaryNode:
     def getVal(self):
         return self.data
 
+    def isLeaf(self):
+        return True if self.left is None and self.right is None else False
+
     # binary search type of insert
     def insertNode(self, data):
 
