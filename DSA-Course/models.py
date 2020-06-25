@@ -57,3 +57,40 @@ def inOrder(root):
     inOrder(root.left)
     print(root.data)
     inOrder(root.right)
+
+
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    def isEmpty(self):
+        return len(self.stack) == 0
+
+    # adds to front bc LIFO
+    def push(self, item):
+        self.stack.insert(0, item)
+
+    def pop(self):
+        if len(self.stack) > 0:
+            front = self.stack[0]
+            self.stack.remove(front)
+            return front
+
+        else:
+            return None
+
+    def peek(self):
+        if len(self.stack) == 0:
+            return None
+
+        else:
+            return self.stack[0]
+
+
+    def size(self):
+        return len(self.stack)
+
+    def show(self):
+        print(self.stack)
+
+
