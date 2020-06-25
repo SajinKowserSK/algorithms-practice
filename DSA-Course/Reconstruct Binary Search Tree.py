@@ -6,7 +6,7 @@ def reconstruct(inOrder, start, end):
         return None
 
     mid = int(start + (end - start)/2)
-    root = BinaryNode(int(mid))
+    root = BinaryNode(inOrder[int(mid)])
 
     root.left = reconstruct(inOrder, start, mid-1)
     root.right = reconstruct(inOrder, mid+1, end)
@@ -19,8 +19,5 @@ def oob(arr, index):
 
 arr = [1,2,3,4,5,6,7]
 test = reconstruct(arr, 0, len(arr)-1)
-
-# for x in range(0, len(test)):
-#     test[x] = test[x].val
 
 inOrder(test)
