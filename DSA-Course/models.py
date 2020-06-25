@@ -75,7 +75,6 @@ class Stack:
             front = self.stack[0]
             self.stack.remove(front)
             return front
-
         else:
             return None
 
@@ -91,6 +90,57 @@ class Stack:
         return len(self.stack)
 
     def show(self):
+        return self.stack
+
+    def printStk(self):
         print(self.stack)
+
+
+
+class Queue:
+    def __init__(self):
+        self.stk1 = Stack()
+        self.stk2 = Stack()
+
+    def flush(self, stkOG, stkTO):
+        while not stkOG.isEmpty():
+            stkTO.push(stkOG.pop())
+
+    def enqueue(self, item):
+        self.stk1.push(item)
+
+    def dequeue(self):
+        if self.stk1.isEmpty():
+            return None
+
+        self.flush(self.stk1, self.stk2)
+
+        self.stk2.pop()
+        self.flush(self.stk2, self.stk1)
+
+    def show(self):
+        lifo = self.stk1.show()
+
+        if len(lifo) == 0:
+            return []
+
+
+        start = 0
+        end = len(lifo)-1
+
+
+        while start <= end:
+
+            tmp = lifo[start]
+            lifo[start] = lifo[end]
+            lifo[end] = tmp
+
+            start += 1
+            end -= 1
+
+        print(lifo)
+        return lifo
+
+
 
 
