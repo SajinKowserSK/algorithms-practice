@@ -49,3 +49,11 @@ def createTree(lst):
         root.insertNode(lst[x])
 
     return root
+
+def inOrder(root):
+    if root is None:
+        return None
+
+    inOrder(root.left)
+    print(root.data)
+    inOrder(root.right)
