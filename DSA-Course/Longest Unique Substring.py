@@ -30,7 +30,7 @@ def longest(arr):
                 del myMap[arr[start]]
                 start = start + 1
 
-        # check for in case substring is start to the end of the array 
+        # check for in case substring is start to the end of the array
         if end - 1 - start + 1 > finEnd - finStart + 1:
             finStart = start
             finEnd = end - 1

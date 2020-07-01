@@ -1,23 +1,32 @@
-import pdb
+from helpers import *
 
+def subArr(arr, target):
+    start = 0
+    end = 0
+    currSum = arr[start]
 
-def pair(x, y):
-    return ("("+str(x)+", "+str(y)+")")
+    while end <= len(arr)-1:
+        if start > end:
+            start = end
+            end = end + 1
 
-def subArr(arr):
+        else:
+            if currSum == target:
+                return pair(start, end)
 
-    for x in range (0, len(arr)):
-        start = x
-        sum = 0
+            elif currSum < target:
+                end = end + 1
+                try:
+                    currSum += arr[end]
 
-        for y in range (x, len(arr)):
-            sum = sum + arr[y]
-
-            if sum == 8:
-                return pair(x, y)
-
-            elif sum > 8:
-                break
+                except:
+                    pass
+            else:
+                currSum -= arr[start]
+                start = start + 1
 
     return None
-print(subArr([1,2,3,5,2]))
+
+
+
+print(subArr([4,6,3,1,0], 14))
