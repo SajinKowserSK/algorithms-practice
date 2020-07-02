@@ -35,4 +35,4 @@ def closestElement(arr, target):
 test = [2,3,5,8,9,11]
 test2 = [2,6,12,34]
 test3 = [1,5,7,12]
-print(closestElement(test3, 7))
+print(closestElement(test, 7))
