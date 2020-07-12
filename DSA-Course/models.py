@@ -58,6 +58,22 @@ def inOrder(root):
     print(root.data)
     inOrder(root.right)
 
+class LinkedNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+    def setNext(self, node):
+        self.next = node
+
+    def setData(self, data):
+        self.data = data
+
+    def getNext(self, node):
+        return node.next
+
+    def getData(self, node):
+        return node.data
 
 class Stack:
     def __init__(self):
