@@ -89,7 +89,15 @@ class LinkedList:
     def setTail(self, node):
         self.tail = node
 
-    def getTail(self, node):
+
+    def findTail(self):
+        curr = self.head
+        while curr.getNext() is not None:
+            curr = curr.getNext()
+
+        self.tail = curr
+
+    def getTail(self):
         return self.tail
 
     def show(self):
@@ -98,6 +106,16 @@ class LinkedList:
             print(curr.getData())
             curr = curr.getNext()
         return ""
+
+    def insert(self, node):
+        if self.head is None:
+            self.head = node
+
+        else:
+           self.findTail()
+           self.tail.setNext(node)
+
+        self.tail = node
 
 class Stack:
     def __init__(self):
