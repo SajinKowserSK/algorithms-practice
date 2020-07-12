@@ -6,9 +6,11 @@ node1 = LinkedNode("first")
 node2 = LinkedNode("sec")
 node3 = LinkedNode("third")
 
-testList.setHead(node1)
-node1.setNext(node2)
-node2.setNext(node3)
+
+testList.insert(node1)
+testList.insert(node2)
+testList.insert(node3)
+testList.insert(LinkedNode("fourth"))
 
 
 def getNthNode(LL, n):
@@ -21,7 +23,9 @@ def getNthNode(LL, n):
     return curr if counter == n else None
 
 
-print(getNthNode(testList, 3).getData())
+print(getNthNode(testList, 4))
+print(testList.getTail().getData())
+
 
 
 
