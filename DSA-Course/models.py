@@ -96,6 +96,7 @@ class LinkedList:
             curr = curr.getNext()
 
         self.tail = curr
+        return self.tail
 
     def getTail(self):
         return self.tail
@@ -112,8 +113,8 @@ class LinkedList:
             self.head = node
 
         else:
-           self.findTail()
-           self.tail.setNext(node)
+            self.findTail().setNext(node)
+
 
         self.tail = node
 
