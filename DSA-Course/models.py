@@ -50,6 +50,15 @@ def createTree(lst):
 
     return root
 
+def createLL(lst):
+    retList = LinkedList()
+    for x in range(0, len(lst)):
+        node = LinkedNode(lst[x])
+        retList.insert(node)
+
+    retList.findTail()
+    return retList
+
 def inOrder(root):
     if root is None:
         return None
@@ -106,6 +115,7 @@ class LinkedList:
         while curr is not None:
             print(curr.getData())
             curr = curr.getNext()
+
         return ""
 
     def insert(self, node):
