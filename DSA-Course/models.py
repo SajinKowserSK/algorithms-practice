@@ -69,11 +69,35 @@ class LinkedNode:
     def setData(self, data):
         self.data = data
 
-    def getNext(self, node):
-        return node.next
+    def getNext(self):
+        return self.next
 
-    def getData(self, node):
-        return node.data
+    def getData(self):
+        return self.data
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def setHead(self, node):
+        self.head = node
+
+    def getHead(self):
+        return self.head
+
+    def setTail(self, node):
+        self.tail = node
+
+    def getTail(self, node):
+        return self.tail
+
+    def show(self):
+        curr = self.head
+        while curr is not None:
+            print(curr.getData())
+            curr = curr.getNext()
+        return ""
 
 class Stack:
     def __init__(self):
