@@ -1,0 +1,73 @@
+class listNode: 
+    def __init__(self, val):
+        self.val = val
+        self.next = None 
+        
+    def setNext(self, node):
+        self.next = node 
+
+
+
+node1 = listNode('A')
+node2 = listNode('B')
+node3 = listNode('A')
+
+
+
+node1.next = node2
+node2.next = node3 
+
+
+def reverseLL(head):
+    if head is None:
+        return None 
+    
+    curr = head 
+    prev = None 
+
+    while curr is not None:
+    
+        nextN = curr.next
+        curr.next = prev
+        prev = curr 
+        curr = nextN
+
+    return prev
+
+
+
+def findMid(head):
+    cF = head
+    cS = head 
+
+    while cF is not None and cF.next is not None:
+        cF = cF.next.next 
+        cS= cS.next 
+
+    return cS
+
+
+def isPalindromeLL(head):
+    if head is None:
+        return None 
+    
+    mid = findMid(head)
+    rev = reverseLL(head)
+    
+    start = head
+    end = rev 
+    
+    while start is not None and end is not None:
+        if start.val != end.val:
+            return False 
+        
+        start = start.next
+        end = end.next 
+        
+    return True 
+
+
+print(isPalindromeLL(node1))
+    
+
+    
