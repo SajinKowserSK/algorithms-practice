@@ -164,6 +164,40 @@ class Stack:
     def printStk(self):
         print(self.stack)
 
+class circularQueue:
+    def __init__(self, size):
+        self.arr = []
+        self.front = 0
+        self.back = 0
+        self.max = size
+        self.len = 0
+
+        for x in range(0, size):
+            self.arr.append(None)
+
+    def enqueue(self, n):
+        if self.len == self.max:
+            print("Queue is full")
+            return
+
+        self.arr[self.back] = n
+        self.back = (self.back + 1) % self.max
+        self.len += 1
+
+
+    def dequeue(self):
+        if self.len == 0:
+            print("Queue is empty")
+            return
+
+        result = self.arr[self.front]
+        self.arr[self.front] = None
+        self.front = (self.front + 1) % self.max
+        self.len -= 1
+        return result
+
+    def show(self):
+        print(self.arr)
 
 
 class Queue:
