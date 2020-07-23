@@ -1,0 +1,100 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jul 22 23:12:18 2020
+"""
+
+from models import * 
+
+class QueueWithMax:
+    
+    def __init__(self):
+        self.main = regQueue()
+        self.max = regQueue()
+        
+    def enqueue(self, node):
+        if node is None:
+            return None 
+        
+        else:
+            
+            print('adding to main queue' + str(node.data))
+            self.main.enqueue(node)
+            
+            while  self.max.head is not None and self.max.tail.data < node.data:
+                print('dequing from max ' + str(self.max.dequeue().data))
+                
+                
+                tmp = self.max.dequeue()
+                if tmp is not None and tmp.data >= node.data:
+                    print('WHAT YOU ARE LOOKING FOR --------> ' + str(tmp.data))
+                    self.max.enqueue(tmp)
+            
+            print('adding to max queue' + str(node.data))
+            self.max.enqueue(node)
+          
+            
+    
+    def dequeue(self):
+        if self.main.head is None:
+            print("empty queue")
+            return 
+            
+        else:
+       
+            result = self.main.dequeue()
+            print('dequeueing from main f' + str(result.data))
+            
+            if self.max.head == result:
+                
+                print('dequeuing from max ' + str(result.data))
+                result = self.max.dequeue()
+                return result 
+            
+            
+            return result
+            
+            
+        
+    def getMax(self):
+        if self.max.head is None:
+            print("empty queue")
+            return
+            
+        else:
+            return self.max.head
+        
+        
+def maxOfSW(arr, k):
+    if arr is None or k is None or len(arr) == 0 or k == 0:
+        return None 
+    
+    retArr = []
+    maxQ = QueueWithMax()
+    size = 0 
+    
+    for x in range(0, len(arr)):
+        maxQ.enqueue(LinkedNode(arr[x]))
+        size += 1 
+        
+        if size == k:
+            print('Last K nums is ' + str(maxQ.getMax().data))
+            retArr.append(maxQ.getMax().data)
+            result = maxQ.dequeue()
+
+            size -= 1
+    
+
+    
+    print(retArr)
+
+maxOfSW([4,6,5,2,4,7],3)
+
+
+                
+                
+            
+                
+            
+        
+        
+        
