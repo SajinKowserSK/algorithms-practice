@@ -200,6 +200,30 @@ class circularQueue:
         print(self.arr)
 
 
+class regQueue:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def enqueue(self, node):
+        if self.head is None:
+            self.head = node
+            self.tail = node
+
+        else:
+            self.tail.next = node
+            self.tail = node
+
+
+    def dequeue(self):
+        if self.head is None:
+            print("Empty Queue")
+
+        else:
+            self.head = self.head.next
+
+
+
 class Queue:
     def __init__(self):
         self.stk1 = Stack()
