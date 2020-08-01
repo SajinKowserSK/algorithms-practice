@@ -1,4 +1,26 @@
-# Binary Tree Node
+class Graph:
+    def __init__(self, Nodes, isDirected=False):
+        self.nodes = Nodes
+        self.adjList = {}
+        self.isDirected = isDirected
+
+        for node in self.nodes:
+            self.adjList[node] = []
+
+
+    def addEdge(self, u, v):
+        self.adjList[u].append(v)
+        if self.isDirected is not True:
+            self.adjList[v].append(u)
+
+
+    def showList(self):
+        for node in self.nodes:
+            print(str(node) + "->" + str(self.adjList[node]))
+
+    def degree(self, node):
+        return len(self.adjList[node])
+
 
 class BinaryNode:
 
