@@ -6,18 +6,29 @@ def levelPrint(root):
 
     root.state = "visiting"
     q = []
+    qNext = []
     q.append(root)
 
+    currlvl = 0
+
+
     while len(q) > 0:
+
         current = q.pop(0)
         print(current.data)
 
+
         for neighbor in current.neighbors:
             if neighbor.state == "unvisited":
-                q.append(neighbor)
+                qNext.append(neighbor)
                 neighbor.state = "visiting"
 
         current.state = "visited"
+
+        if len(q) == 0:
+            print("\n")
+            q = qNext
+            qNext = []
 
 
 first = Vertex(1)
@@ -38,9 +49,6 @@ testGraph.addEdge(third, fourth)
 testGraph.addEdge(third, fifth)
 testGraph.addEdge(fifth, sixth)
 
-# # firstN = first.neighbors
-# # for x in range (0, len(firstN)):
-# #     firstN[x] = firstN[x].data
-#
+
 # print(firstN)
 levelPrint(first)
