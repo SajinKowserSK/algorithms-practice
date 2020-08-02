@@ -26,6 +26,9 @@ def dfsVisit(node, graph, target):
 
 
 
+
+
+
 first = Vertex(1)
 sec = Vertex(2)
 third = Vertex(3)

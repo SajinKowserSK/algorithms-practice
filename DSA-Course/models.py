@@ -7,15 +7,17 @@ class Graph:
         for node in self.nodes:
             self.adjList[node] = []
 
+    def addVertex(self, node):
+        self.adjList[node] = []
 
     def addEdge(self, u, v):
-
-
         if v not in self.adjList[u]:
             self.adjList[u].append(v)
+            u.neighbors.append(v)
 
         if self.isDirected is not True and u not in self.adjList[v]:
             self.adjList[v].append(u)
+            v.neighbors.append(u)
 
 
     def showList(self):
@@ -37,10 +39,31 @@ class Graph:
         for node in self.nodes:
             node.state = "unvisited"
 
+    # def dfsPrint(self, node):
+    #     node.state = "visiting"
+    #     print(node.data)
+    #     neighbors = self.adjList[node]
+    #     for neighbor in neighbors:
+    #         if neighbor.state == "unvisited":
+    #             self.dfsPrint(neighbor)
+    #
+    #     node.state = "visited"
+
+def dfsPrint(node):
+    node.state = "visiting"
+    print(node.data)
+    neighbors = node.neighbors
+    for neighbor in neighbors:
+        if neighbor.state == "unvisited":
+            dfsPrint(neighbor)
+
+    node.state = "visited"
+
 class Vertex:
     def __init__(self, data):
         self.data = data
         self.state = "unvisited"
+        self.neighbors = []
 
 class BinaryNode:
 
