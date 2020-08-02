@@ -18,8 +18,7 @@ def dfsVisit(node, graph, target):
     # print('neighbors is ' + str(neighbors))
 
     for neighbor in neighbors:
-        if neighbor.state == "unvisited" and neighbor.data == target:
-            dfsVisit(neighbor, graph, target)
+        if neighbor.state == "unvisited" and dfsVisit(neighbor, graph, target):
             return True
 
     node.state = "visited"
@@ -50,4 +49,6 @@ testGraph.addEdge(fifth, sixth)
 # print('next')
 # print(testGraph.adjList)
 
-print(dfsTarget(testGraph, 3))
+for x in range(0, 8):
+    print(dfsTarget(testGraph, x))
+    testGraph.reset()

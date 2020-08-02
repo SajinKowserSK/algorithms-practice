@@ -33,6 +33,10 @@ class Graph:
     def degree(self, node):
         return len(self.adjList[node.data])
 
+    def reset(self):
+        for node in self.nodes:
+            node.state = "unvisited"
+
 class Vertex:
     def __init__(self, data):
         self.data = data
