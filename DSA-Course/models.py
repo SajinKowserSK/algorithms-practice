@@ -9,18 +9,34 @@ class Graph:
 
 
     def addEdge(self, u, v):
-        self.adjList[u].append(v)
-        if self.isDirected is not True:
+
+
+        if v not in self.adjList[u]:
+            self.adjList[u].append(v)
+
+        if self.isDirected is not True and u not in self.adjList[v]:
             self.adjList[v].append(u)
 
 
     def showList(self):
         for node in self.nodes:
-            print(str(node) + "->" + str(self.adjList[node]))
+
+            neighbors = self.adjList[node]
+            neighborVals = []
+
+            for x in range (0, len(neighbors)):
+                neighborVals.append(neighbors[x].data)
+
+            print(str(node.data) + "->" + str(neighborVals))
+        print('\n')
 
     def degree(self, node):
-        return len(self.adjList[node])
+        return len(self.adjList[node.data])
 
+class Vertex:
+    def __init__(self, data):
+        self.data = data
+        self.state = "unvisited"
 
 class BinaryNode:
 
