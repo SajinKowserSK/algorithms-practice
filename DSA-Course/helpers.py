@@ -11,4 +11,3 @@ def chArr(str):
     return charArray
 
 
-
