@@ -1,3 +1,39 @@
+# binary search w duplicates
+# return index of where to put target in log time
+
+def search(arr, target):
+    if arr is None:
+        return None
+
+    start = 0
+    end = len(arr)-1
+    closest = None
+    closest_index = None
+
+    while start <= end:
+        mid = int(start + (end-start)/2)
+        if arr[mid] < target:
+            start = mid + 1
+
+        elif arr[mid] > target:
+            diff = arr[mid] - target
+            if closest is None or diff <= closest:
+                closest = diff
+                closest_index = mid
+
+            end = mid - 1
+
+        else:
+            return mid
+
+    if closest_index is None:
+        closest_index = len(arr)-1
+
+    return closest_index
+
+
+# print(search([5,5,6], 4))
+
 # shortest unsorted
 # identify dip
 # identify bump
@@ -38,4 +74,4 @@ def find(arr):
 
 
 
-print(find([1,3,5,2,6,4,7,8,9]))
+# print(find([1,3,5,2,6,4,7,8,9]))
