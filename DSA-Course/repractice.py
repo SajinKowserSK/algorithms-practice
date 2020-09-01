@@ -1,3 +1,40 @@
+# find min in cyclically sorted array
+
+def findMin(arr):
+    if arr is None:
+        return None
+
+    start = 0
+    end = len(arr)-1
+    right_most = arr[len(arr)-1]
+
+
+    while start <= end:
+        mid = int(start + (end - start)/ 2)
+
+        if arr[mid] <= right_most and mid == 0 or arr[mid-1] > arr[mid]:
+            return mid
+
+        elif arr[mid] > right_most:
+            start = mid + 1
+
+        else:
+            end = mid - 1
+
+    return None
+
+
+print(findMin([3,4,5,6,7,1,2]))
+
+
+
+
+
+
+
+
+
+
 # binary search w duplicates
 # return index of where to put target in log time
 
