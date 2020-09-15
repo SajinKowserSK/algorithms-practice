@@ -1,3 +1,31 @@
+class NodeLL:
+
+    def __init__(self, data):
+        self.val = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def show(self):
+        curr = self.head
+        while curr is not None:
+            print(curr.val)
+            curr = curr.next
+
+
+e1 = NodeLL("Mon")
+e2 = NodeLL("Tues")
+LL = LinkedList()
+LL.head = e1
+e1.next = e2
+LL.show()
+
+
+
+
+
 # find min in cyclically sorted array
 
 def findMin(arr):
@@ -24,15 +52,7 @@ def findMin(arr):
     return None
 
 
-print(findMin([3,4,5,6,7,1,2]))
-
-
-
-
-
-
-
-
+# print(findMin([3,4,5,6,7,1,2]))
 
 
 # binary search w duplicates
@@ -108,7 +128,6 @@ def find(arr):
             break
 
     return (min_index, bump)
-
 
 
 # print(find([1,3,5,2,6,4,7,8,9]))
