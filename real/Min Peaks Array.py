@@ -24,7 +24,6 @@ def minimalPeaks(arr):
 
 
     removes.append(arr[0])
-    print(removes)
-    return None
+    return removes
 
-minimalPeaks(t)
+print(minimalPeaks(t))
