@@ -1,8 +1,13 @@
 # ANSWER
 def twoStrings(arr):
     p = arr[0]
+    pairs_counted = 0
 
     for x in range(1, len(arr)-1, 2):
+
+        if pairs_counted == p:
+            break
+
         string1 = arr[x]
         string2 = arr[x+1]
 
@@ -20,15 +25,17 @@ def twoStrings(arr):
         else:
             print("NO")
 
+        pairs_counted += 1
+
 
 # TEST CASES
-given_test_case = [2, 'hello', 'world', 'hi', 'world'] # - > 'YES', 'NO'
+given_test_case = [2, 'hello', 'world', 'hi', 'world', 'ab', 'a'] # - > 'YES', 'NO'
 custom_test_case = [2, 'abacus', 'abahus', 'boolin', 'coolin'] # - > 'YES', 'YES'
 custom_test_case2 = [2, 'dawg', 'no', 'yuhhh', 'wta!'] # -> 'NO', 'NO'
 
 twoStrings(given_test_case)
-twoStrings(custom_test_case)
-twoStrings(custom_test_case2)
+# twoStrings(custom_test_case)
+# twoStrings(custom_test_case2)
 
 # ALGORITHM ANALYSIS
 
