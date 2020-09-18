@@ -1,3 +1,32 @@
+from models import BinaryNode
+
+root = BinaryNode("A")
+root.left = BinaryNode("B")
+root.left.left = BinaryNode("D")
+
+root.right=BinaryNode("C")
+root.right.left = BinaryNode("E")
+root.right.right = BinaryNode("F")
+
+def print_paths(root, lst, final_set):
+    if root is None or root.left is None or root.right is None:
+        print(lst)
+    else:
+        lst.append(root)
+        print_paths(root.left, lst, final_set)
+        print_paths(root.right, lst, final_set)
+        lst.pop(-1)
+
+        return final_set
+
+testLst = []
+testSet = []
+answer = print_paths(root, testLst, testSet)
+print(answer)
+
+
+
+
 class NodeLL:
 
     def __init__(self, data):
