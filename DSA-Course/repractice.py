@@ -1,28 +1,46 @@
 from models import BinaryNode
 
+# TEST 1
+# root = BinaryNode("A")
+# root.left = BinaryNode("B")
+# root.left.left = BinaryNode("D")
+# root.right=BinaryNode("C")
+# root.right.left = BinaryNode("E")
+# root.right.right = BinaryNode("F")
+
+# TEST 2
 root = BinaryNode("A")
 root.left = BinaryNode("B")
-root.left.left = BinaryNode("D")
+root.left.left = BinaryNode("C")
+root.left.left.left = BinaryNode("E")
+root.left.left.right = BinaryNode("D")
 
-root.right=BinaryNode("C")
-root.right.left = BinaryNode("E")
-root.right.right = BinaryNode("F")
+def print_bin_node(lst):
+    for x in range(0, len(lst)):
+        try:
+            lst[x] = lst[x].data
+        except:
+            continue
+    return lst
 
-def print_paths(root, lst, final_set):
-    if root is None or root.left is None or root.right is None:
-        print(lst)
-    else:
+def print_paths(root, lst):
+    if root is None:
+        return []
+
+    elif root.left is None and root.right is None:
         lst.append(root)
-        print_paths(root.left, lst, final_set)
-        print_paths(root.right, lst, final_set)
+        print(print_bin_node(lst))
         lst.pop(-1)
 
-        return final_set
+    else:
+        lst.append(root)
+        print_paths(root.left, lst)
+        print_paths(root.right, lst)
+        lst.pop(-1)
 
-testLst = []
-testSet = []
-answer = print_paths(root, testLst, testSet)
-print(answer)
+print_paths(root, [])
+
+
 
 
 
@@ -49,7 +67,7 @@ e2 = NodeLL("Tues")
 LL = LinkedList()
 LL.head = e1
 e1.next = e2
-LL.show()
+# LL.show()
 
 
 
