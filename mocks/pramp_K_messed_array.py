@@ -1,59 +1,36 @@
-## HELPERS AND STARTING CLASSES
+import queue as q
 
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
+def sort_k_messed_array(arr, k):
+  # simple sort will be in O(n*log n) time but using
+  # minheap or priority queue we can get O(n * log k) time
 
-# 3 -> 4 -> 3 -> 2 -> 5 -> 5 -> 7
+  # change = 0
+  # [1, 4, 5, 2, 3, 7, 8, 6, 10, 9]
+  # for x in range(0, len(arr)-1):
+  # put item in priority queue (pq)
+  # if the pq == k+1 (we have considered k+1 elements to the right)
+  # arr[change]=pq.get()
 
-arr = [3,4,3,2,5,5,7]
-def create_LL(arr):
-    for x in range(0, len(arr)):
-        arr[x] = Node(arr[x])
+  # in the end we have k elements in pq
+  # so while pq is not empty
+  # arr[change] = pq.get()
+  # return arr
 
-    for x in range(0, len(arr)-1):
-        arr[x].next = arr[x+1]
+  pq = q.PriorityQueue()
+  change_i = 0
 
-    return arr[0]
+  for x in range(0, len(arr)):
+      pq.put(arr[x])
 
+      if pq.qsize() == k+1:
+          arr[change_i] = pq.get()
+          change_i += 1
 
-case = create_LL(arr)
+  while pq.qsize() != 0:
+      arr[change_i] = pq.get()
+      change_i += 1
 
-## QUESTION
-def condense(case):
-    curr = case
-    vals = []
-
-    while curr is not None:
-        vals.append(curr.data)
-        unique = find_unique(curr.next, vals)
-        curr.next = unique
-
-        if unique is not None:
-            vals.append(unique.data)
-
-        curr = curr.next
-
-    return case
+  return arr
 
 
-def find_unique(node, vals):
-    print(node.data)
-    while node is not None:
-        if node.data not in vals:
-            return node
-
-    return None
-
-
-def print_ll(node):
-    while node is not None:
-        print(node.data)
-        node = node.next
-
-ans = condense(case)
-
-
-
-
+print(sort_k_messed_array([1, 4, 5, 2, 3, 7, 8, 6, 10, 9], 2))
