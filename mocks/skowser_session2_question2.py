@@ -46,7 +46,6 @@ def helper_get_pairs(string):
 
     return pairs
 
-print(len(helper_get_pairs("abcd")))
 # TEST CASES
 given_test_case = "beabeefeab" # -> 5
 custom_test_case = "abbcdabbc" # -> 4
@@ -59,12 +58,12 @@ print(alternate(len(custom_test_case2), custom_test_case2))
 # ALGORITHM ANALYSIS
 
 ## TIME COMPLEXITY
-''' The time complexity is O(n) or O(a^2 * n) at worst where "a" (a constant) 
-    is the number of letters in the alphabet (pair function). The pair function is O(a^2) since at worst, 
+''' The time complexity is O(n) and the space complexity is O(n).
     
-    PAIR FUNCTION - O(1) or O(a^2)
-    The string can have 26 unique letters and we look for every unique pair. However since at worse this would 
-    yield 25+24+23...+1 operations (a constant) it may also be constant or O(1) time. 
+    PAIR FUNCTION - O(1) 
+    The string can have 26 unique letters and we look for every unique pair. Using "choose-notation" or binomial 
+    coefficient, we know in the worst case this will yield 25+24+23...+1 (325) operations which is a constant.  
+    The iterations cannot go past this constant number, and does not grow with time hence it is not O(n^2). 
     
     CREATING ALTERNATE STRING WITH EACH PAIR OF LETTERS - O(n) 
     Since we don't know the max length of string (unlike pairs where we did know the max number), 
@@ -72,9 +71,8 @@ print(alternate(len(custom_test_case2), custom_test_case2))
     
     CHECK VALID STRING - O(n) 
     We iterate through each item in the string up until n-2 so O(n-2) or O(n) time.
-    Since this happens in the iteration of pair loops ( O(1) or O(a^2) time complexity), 
-    we get a total time complexity of O(n) if we consider a^2 to be constant and 
-    O(n * a^2) if we do not.
+    Since this happens in the iteration of pair loops 
+    we get a total time complexity of O(n) as  O(n * O(325)) -> O(n * O(1)) -> O(n) 
 '''
 ## SPACE COMPLEXITY
 ''' At worst, we create an alt_stirng of all characters, so O(n) space'''
