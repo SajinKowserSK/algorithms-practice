@@ -4,7 +4,6 @@ class BinaryNode:
         self.left = None
         self.right = None
 
-
 root = BinaryNode(1)
 root.right = BinaryNode(2)
 root.right.right = BinaryNode(5)
