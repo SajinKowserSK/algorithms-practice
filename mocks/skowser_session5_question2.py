@@ -20,4 +20,6 @@ def maxSubArray(nums):
 
     return max_sum
 
-print(maxSubArray([-1,4,5,-7,3]))
+# TEST CASES
+# print(maxSubArray([-1,4,5,-7,3])) # 9
+# print(maxSubArray([-1,-1,-2])) # -1
