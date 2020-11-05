@@ -12,6 +12,7 @@ def print_level_order(root):
         while len(queue) > 0:
             popped = queue.pop(0)
             print(popped.val)
+
             if popped.left != None:
                 queue.append(popped.left)
 
