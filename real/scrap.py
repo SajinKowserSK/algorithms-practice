@@ -1,5 +1,5 @@
-def test():
-    return True if 2>= 2 else False
+dict1 = {1:2, 2:3}
 
-booli = test()
-print(booli)
+dict1 = dict.fromkeys(dict1, 0)
+
+print(dict1)
