@@ -1,49 +1,47 @@
-from models import *
+class Solution:
+    def canFinish(self, numCourses: int, prereq: List[List[int]]) -> bool:
 
-first = Vertex(1)
-sec = Vertex(2)
-third = Vertex(3)
-fourth = Vertex(4)
-fifth = Vertex(5)
-lst = [first, sec, third, fourth, fifth]
-testGraph = Graph(lst, isDirected=True)
+        if len(prereq) == 0:
+            return True
 
+        adj = {}
 
-testGraph.addEdge(first, fourth)
-testGraph.addEdge(first, sec)
-testGraph.addEdge(sec, fourth)
-testGraph.addEdge(sec, third)
-testGraph.addEdge(sec, fifth)
-testGraph.addEdge(third, fifth)
+        for x in range(0, numCourses):
+            adj[x] = []
 
+        for pair in prereq:
+            course = pair[0]
+            prereq_course = pair[1]
 
+            adj[course].append(prereq_course)
 
-testGraph.dfsPrint(first)
+        visits = {}
+        for key in adj:
+            visits[key] = 0
 
-def topSort(root):
-    master = []
-    stack = []
-    stack.insert(0, root)
-    master.append(root)
-    seen = set()
+        for key in adj:
+            if not self.dfs(key, adj, visits):
+                return False
 
-    while stack:
-        popped = stack.pop(0)
+        first = None
+        for key in adj:
+            if len(adj[key]) == 0:
+                first = key
+                break
 
-        if popped not in seen:
-            seen.add(popped)
+        return False if first is None else True
 
-        for neighbor in popped.neighbors:
-            if neighbor not in seen:
-                stack.insert(0, neighbor)
-                master.append(neighbor)
+    def dfs(self, key, adj, visits):
+        if visits[key] == 1:
+            return False
 
-    return master
+        visits[key] = 1
+        for nbr in adj[key]:
+            # if the neighbor is not done being visited and dfs is false
+            if visits[nbr] != 2 and not self.dfs(nbr, adj, visits):
+                return False
 
-test = topSort(first)
-for x in range (0, len(test)):
-    test[x] = test[x].data
-
-print(test)
+        visits[key] = 2
+        return True
 
 
