@@ -39,15 +39,15 @@ class Graph:
         for node in self.nodes:
             node.state = "unvisited"
 
-    # def dfsPrint(self, node):
-    #     node.state = "visiting"
-    #     print(node.data)
-    #     neighbors = self.adjList[node]
-    #     for neighbor in neighbors:
-    #         if neighbor.state == "unvisited":
-    #             self.dfsPrint(neighbor)
-    #
-    #     node.state = "visited"
+    def dfsPrint(self, node):
+        node.state = "visiting"
+        print(node.data)
+        neighbors = self.adjList[node]
+        for neighbor in neighbors:
+            if neighbor.state == "unvisited":
+                self.dfsPrint(neighbor)
+
+        node.state = "visited"
 
 def dfsPrint(node):
     node.state = "visiting"
