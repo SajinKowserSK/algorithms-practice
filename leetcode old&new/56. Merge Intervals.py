@@ -5,6 +5,27 @@ class Solution:
             return []
 
         intervals = sorted(intervals)
+        final = []
+
+        for interval in intervals:
+
+            if len(final) == 0 or final[-1][1] < interval[0]:
+                final.append(interval)
+
+            else:
+                final[-1][1] = max(final[-1][1], interval[1])
+
+        return final
+
+
+
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+
+        if len(intervals) == 0:
+            return []
+
+        intervals = sorted(intervals)
         x = 0
         while x < len(intervals) - 1:
 
