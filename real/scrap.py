@@ -1,48 +1,34 @@
-# practice soln 1 completed on lc
+import pandas as pd
 
-# practice soln 2 completed on lc
+f = open("recs.txt", "r")
 
-class Solution:
-    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
-        if len(intervals) == 0:
-            return 0
+master = []
+for line in f:
+    curr = []
+    split = line.split()
 
-            # sort intervals by starting time
-        intervals = sorted(intervals)
+    for x in range(0, len(split)):
+        word = split[x]
+        if "@" in word:
+            indice = x
 
-        # start with 1 room and put first meeting in there
-        room_dict = {}
-        rooms = 1
-        room_dict[rooms] = intervals[0]
 
-        # for all times up until the second last one
-        for x in range(0, len(intervals) - 1):
+    email = split[indice]
+    company_name = split[0:indice]
+    separator = ' '
+    left = separator.join(company_name)
+    recruiter = split[indice+1:]
+    seperator = ' '
+    right = seperator.join(recruiter)
 
-            # check current time and adjacent time
-            curr = intervals[x]
-            nex = intervals[x + 1]
+    curr.append(left)
+    curr.append(email)
+    curr.append(right)
 
-            # if next meetings starting time is before the current one ends , need a room
-            if nex[0] < curr[1]:
-                need_room = True
+    master.append(curr)
 
-                # check if others are free
-                for y in range(1, rooms + 1):
+final  = pd.DataFrame(master, columns=['Company Name', 'Email', 'Recruiter Name'])
+final.to_csv (r'',
+              index = False, header=True)
 
-                    # if the start time of next is after a room's end time or at an end time of someone already in the room
-                    if nex[0] >= room_dict[y][1]:
-                        room_dict[y] = nex
-
-                        # we no longer need room
-                        need_room = False
-                        break
-
-                # if none are free, add a new room and put the time in there
-                if need_room:
-                    rooms += 1
-                    room_dict[rooms] = nex
-
-            else:
-                room_dict[rooms] = nex
-
-        return rooms
+print('done')
