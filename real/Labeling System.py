@@ -102,6 +102,7 @@ def label(originalLabel, charLimit):
                 if broken:
                     for elem in lst:
                         final+=elem[1]
+
                     final = fix(final, charLimit)
                     return final
 

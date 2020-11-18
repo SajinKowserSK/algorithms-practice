@@ -59,6 +59,3 @@ def vanity(codes, numbers):
         result[x] = number
 
     return result
-
-
-if __name__ == '__main__':
