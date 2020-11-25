@@ -2,6 +2,41 @@ class Solution:
     def reorderLogFiles(self, logs: List[str]) -> List[str]:
 
         letterLogs = []
+        digitLogs = []
+
+        for log in logs:
+            tmp = log.split()
+
+            no_id = " ".join(tmp[1:])
+            no_id = no_id + " " + tmp[0]
+
+            if tmp[1].isalpha():
+                letterLogs.append(no_id)
+
+            else:
+                digitLogs.append(log)
+
+        letterLogs.sort()
+
+        for x in range(0, len(letterLogs)):
+            log = letterLogs[x]
+
+            tmp = log.split()
+            log_id = tmp[-1]
+            tmp.pop(-1)
+
+            new = " ".join(tmp)
+            new = log_id + " " + new
+
+            letterLogs[x] = new
+
+        return letterLogs + digitLogs
+
+
+class Solution:
+    def reorderLogFiles(self, logs: List[str]) -> List[str]:
+
+        letterLogs = []
         map1 = {}
 
         for log in logs:
