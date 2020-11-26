@@ -1,3 +1,10 @@
+# the idea is that we have a start and end, which are initialized to the initial depth or time
+# that we encouter it from first node
+# end however changes to the lowest depth from the start node WITHIN a strongly connected component (SCC)
+# when we have two nodes with a start < neighbor node's end time that means the neighbor node is from another SCC
+# hence the edge between them is crucial and you should count it
+# important to continously update the end for a node to ensure you have the node's SCC's lowest depth/time
+
 class Solution:
     def criticalConnections(self, n: int, connections: List[List[int]]) -> List[List[int]]:
         adjList = {}
