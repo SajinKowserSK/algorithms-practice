@@ -50,8 +50,21 @@ def count2(arr, target):
 
     return count
 
-print(count([1,5,5,1,5,1], 6))
-print(count2([1,5,5,1,5,1], 6))
+
+def count3(arr, t):
+    map1 = {}
+    ans = set()
+    for x in range(0, len(arr)):
+        elem = arr[x]
+
+        if t - elem in map1:
+            ans.add((elem, arr[map1[t-elem]]))
+
+        else:
+            map1[elem] = x
+
+    return len(ans)
 
 print(count([1, 1, 2, 45, 46, 46], 47))
 print(count2([1, 1, 2, 45, 46, 46], 47))
+print(count3([1, 1, 2, 45, 46, 46], 47))

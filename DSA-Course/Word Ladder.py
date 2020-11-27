@@ -10,7 +10,7 @@ def createAdjlist(wordList):
                 adj[key] = []
 
             adj[key].append(w)
-
+    print(adj)
     return adj
 
 
@@ -50,9 +50,9 @@ def wordLadder(start, end, wordList):
     return bfs(start, end, adjlist)
 
 
-testList = ['hit', 'dot', 'hot', 'dog', 'cog', 'log', 'lot']
+testList = ['hit', 'hip', 'hop']
 testStart = 'hit'
-testEnd = 'cog'
+testEnd = 'hot'
 
 
 print(wordLadder(testStart, testEnd, testList))
