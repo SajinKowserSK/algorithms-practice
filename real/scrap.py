@@ -1,4 +1,3 @@
-tst = "s" * 5
-tst = "1" * 5
-tst = [int(x) for x in tst]
-print(tst)
+lst = [15, 24, 33, 42]
+lst.sort(key = lambda x: int(str(x)[1]))
+print(lst)
