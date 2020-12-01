@@ -19,6 +19,10 @@ class Solution:
 
         real2c = {}
 
+        # have to iterate through and do 3 main things
+        # 1) copy the node + place it in the hashmap
+        # 2) create a start ptr for reference to the copied list's head
+        # 3) continously update prev
         while curr:
             copy = Node(curr.val)
             real2c[curr] = copy
@@ -28,7 +32,7 @@ class Solution:
 
             else:
                 prev = copy
-                start = prev
+                start = prev # very very important step, have to create "start" ptr
 
             curr = curr.next
 
@@ -36,9 +40,6 @@ class Solution:
                 prev = prev.next
 
         prev.next = None
-        final = prev.next
-
-        copy_curr = start
         curr = head
 
         while curr:
