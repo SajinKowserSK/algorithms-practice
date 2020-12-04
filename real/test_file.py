@@ -1,1 +1,6 @@
-print("hello world does my macbook m1 work?")
+test = {}
+
+test["one"] = 1
+test["two"] = 2
+
+print(test[0])
