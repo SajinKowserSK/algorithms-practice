@@ -1,3 +1,4 @@
+# keep a stringMap of {string: occurences:int} so you can name it as name = string+str(stringMap[string])
 def uniqDev(arr):
     strmap = {}
 
