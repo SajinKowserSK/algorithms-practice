@@ -1,4 +1,7 @@
 
+# APPROACH 1 -> TC O(N) SC -> O(N), iterate through and check if target - val is in the map.
+# if it is, get that value and put this current value to make a pair for the answer SET (unique pairs)
+# if it's not in the map then just put the value in the map since it'll be the partner's target - val
 def count(arr, target):
     count = 0
     results = set()
@@ -16,7 +19,10 @@ def count(arr, target):
 
     return len(results)
 
-
+# APPROACH 2 -> O(nlogn) TC and O(1) SC
+# TWO Ptr method, as usual with start and end
+# however, everytime something is counted as an answer, increment count variable and record this "pre start"
+# put while condition within outer loop saying while arr[prev_start] == arr[start] -> CONTINUE TO NEXT ITER
 def count2(arr, target):
     arr.sort()
     count = 0
