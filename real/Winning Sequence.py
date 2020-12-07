@@ -15,8 +15,15 @@ def winSeq(low, high, num):
     # first condition is to ensure peak doesn't exceed nums in return list range
     # second condition is to ensure
 
+    # example: low = 2, high = 4, nums = 5
+    # [3,4,3,2, X] -> doesn't work if you just put peak at 1
+    # BUT if you optimize for peak position which is index 2
+    # [2,3,4,3,2] -> WORKS
+
     peak = 1
 
+    # if num - 1 (last indice) greater than the range of numbers we are a shortage of numbers
+    # high - low instead of high - low + 1 bc one number is repeated anyway
     while peak < num and num - 1 - peak > high - low:
         peak += 1
 
@@ -38,7 +45,7 @@ def winSeq(low, high, num):
     return output
 
 
-print(winSeq(2, 4, 4))
+print(winSeq(5, 51, 12))
 
 
 
