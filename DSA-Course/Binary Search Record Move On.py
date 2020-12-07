@@ -1,4 +1,5 @@
 # find closest number to target
+# identical to BS, just keep track of the abs(closest_difference) to the target
 # if target is in array return target
 # return as pos index
 
