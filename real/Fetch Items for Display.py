@@ -12,6 +12,9 @@ def fetchItemsToDisplay(numOfItems, items, sortParam, sortOrder, itemsPerPage, p
     if sortOrder == 1:
         main.sort(key = lambda x: x[sortParam], reverse=True)
 
+    # now we have a whole master page with all items sorted, need to go to specific page
+    # start at pg 0, go to page n (so up till n+1), SKIP COUNT by # Items on Page
+    # also update start += skipCount
     start = 0
     for pageNum in range(0, pageNumber+1, itemsPerPage):
         start += itemsPerPage
