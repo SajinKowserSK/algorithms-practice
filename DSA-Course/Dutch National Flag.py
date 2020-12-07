@@ -16,6 +16,7 @@ def arrange(arr, pivot):
 
         # don't update counter here since you might swap into the before pivot position
         # an elem greater than pivot ie [5,4,6] -> [6,4,5] needs to be inspected again
+        # this is because the numbers from right side haven't been proessed yet
         elif curr > pivot:
             swap(x, endBoundary, arr)
             endBoundary = endBoundary - 1
