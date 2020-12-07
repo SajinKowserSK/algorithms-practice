@@ -1,3 +1,10 @@
-lst = [15, 24, 33, 42]
-lst.sort(key = lambda x: int(str(x)[1]))
-print(lst)
+from collections import OrderedDict
+
+sajin = OrderedDict()
+
+sajin["1"] = 'yo'
+sajin["2"] = 'yo2'
+
+
+sajin.pop("2")
+print(sajin)
