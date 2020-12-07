@@ -22,8 +22,9 @@ def winSeq(low, high, num):
 
     peak = 1
 
-    # if num - 1 (last indice) greater than the range of numbers we are a shortage of numbers
+    # if num - 1 (last indice) - peak greater than the range of numbers (high - low) we are a shortage of numbers
     # high - low instead of high - low + 1 bc one number is repeated anyway
+    # keep updating peak
     while peak < num and num - 1 - peak > high - low:
         peak += 1
 
