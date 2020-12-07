@@ -1,4 +1,4 @@
-def subArrTarget(arr, target)
+                                                                                                       def subArrTarget(arr, target)
   if arr is None or len(arr) == 0:
     return None 
    
