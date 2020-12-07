@@ -1,3 +1,5 @@
+# only add edges between nodes with different parents (meaning they are from different components
+
 def power_grid(num, connections):
     pmap = {}
     output = []
