@@ -37,8 +37,7 @@ def automate(numGroups, arr):
         output.append(popped)
 
     # because we filled first one with 1, we know there's always an extra group
-    # if the extra group is greater than our last elem AND
-    # LAST ELEM and SECOND LAST ELEM are the same, then we can increment last elem by one
+    # if the extra group is greater than our last elem
     final_elem = heapq.heappop(min_heap)
 
     if final_elem >= output[-1] + 1:
