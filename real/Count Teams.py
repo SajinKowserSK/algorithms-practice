@@ -2,19 +2,29 @@ def count(num, skills, minEmp, minLevel, maxLevel):
     if len(skills) == 0:
         return 0
 
+    # get eligibles
     eligible = 0
     for x in range(0, len(skills)):
         if minLevel <= skills[x] <= maxLevel:
-            print(skills[x])
             eligible += 1
 
-
+    # create factorial tables
     factorialTable = {}
     createFTable(num, factorialTable)
 
-    possible_teams = choose(eligible, minEmp, factorialTable)
-    print(eligible, factorialTable)
-    return possible_teams
+    #
+    total = 0
+
+    # combination formula -> for total we want to add
+    # CHOOSE FORMULA (n!/(n-k)! * k!)
+    # from minAssosciates to eligible inclusive
+
+
+    for x in range(minAssociates, eligible+1):
+        total += factorialTable[eligible] / factorialTable[x] * factorialTable[eligible - x]
+
+    print(total)
+    return int(total)
 
 def createFTable(num, table):
         if num == 0:
