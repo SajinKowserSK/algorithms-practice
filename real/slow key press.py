@@ -8,8 +8,6 @@ def slowestKey(self, releaseTimes: List[int], keysPressed: str) -> str:
             key = keysPressed[i]
         elif longestRelease == releaseTimes[i] - releaseTimes[i-1] and ord(key) < ord(keysPressed[i]):
             key = keysPressed[i]
-
-
     return key
 
 def slow_key(arr):
