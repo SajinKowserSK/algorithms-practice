@@ -29,3 +29,15 @@ class Solution:
             prev.next = curr2
 
         return pre_start.next
+    
+    def mergeTwoLists2(self, l2: ListNode, l2: ListNode) -> ListNode:
+        if not l1 or not l2:
+            return l1 or l2
+        
+        if l1.val < l2.val:
+            l1.next = self.mergeTwoLists2(l1.next, l2)
+            return l1
+        
+        l2.next = self.mergeTwoLists2(l1, l2.next)
+        return l2
+    
