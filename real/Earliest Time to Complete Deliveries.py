@@ -32,6 +32,17 @@ def earliestTime(numBuildings, buildingopenTime, offloadTime):
 
     return earliest
 
+
+def earliestTime2(numBuildings, buildingOpenTime, offloadTime):
+    buildingOpenTime.sort()
+    offloadTime.sort()
+    numDocks = numBuildings*4
+    earliest = 0
+    for i in range(numBuildings):
+      j = numDocks - (i*4) - 1
+      earliest = max(ans, buildingOpenTime[i]+offloadTime[j])
+    return earliest
+
 test = [8,10]
 test_offload = [2,2,3,1,8,7,4,5]
 print(earliestTime(len(test), test, test_offload))
