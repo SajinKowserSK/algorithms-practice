@@ -44,10 +44,10 @@ def numDropped2(nums, requestTime):
         # start at 21st element (i = 20) because 20th element is allowed under "can have 20 transactions in 10s"
         # we want to check if the 21st element and 1st element are within 10s, if they are then drop.
         # NOT <= 10 because 0 counts as "same seconds"
-        elif x >= 20 and requestTime[x] - requestTime[x-20] < 10:
+        elif x > 19 and requestTime[x] - requestTime[x-20] < 10:
             dropped += 1
 
-        elif x >= 60 and requestTime[x] - requestTime[x-60] < 60:
+        elif x > 59 and requestTime[x] - requestTime[x-60] < 60:
             dropped += 1
     return dropped
 

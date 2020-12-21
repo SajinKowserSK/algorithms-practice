@@ -45,4 +45,4 @@ def find_latest(arr, target):
     return -1
 
 
-print(main([1,2,2,2,4], 2))
+print(main([2,2,2,2,2], 2))
