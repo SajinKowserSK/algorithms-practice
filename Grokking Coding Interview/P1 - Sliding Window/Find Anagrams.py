@@ -23,7 +23,7 @@ class Solution:
             if matched == len(ch_dict):
                 retL.append(start_ptr)
 
-            if end_ptr >= len(p) - 1:
+            if end_ptr >= len(p) - 1: #only if end ptr is greater/eq than the len(pattern) do we start moving the start ptr
                 left_char = s[start_ptr]
                 start_ptr += 1
 
@@ -34,3 +34,6 @@ class Solution:
                     ch_dict[left_char] += 1
 
         return retL
+
+
+    #eacbd and #abc is the pattern
