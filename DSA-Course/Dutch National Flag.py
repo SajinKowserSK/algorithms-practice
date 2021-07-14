@@ -34,5 +34,5 @@ def swap(pos1, pos2, arr):
     return arr
 
 
-print(swap(1,0,[1,2]))
-print(arrange([6,4,1], 4))
+# print(swap(1,0,[1,2]))
+print(arrange([2,2,0,1,2,0], 1))
