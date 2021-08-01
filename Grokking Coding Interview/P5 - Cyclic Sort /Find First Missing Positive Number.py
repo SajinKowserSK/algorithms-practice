@@ -6,7 +6,7 @@ def find_first_smallest_missing_positive(nums):
 
     # we have to put the current numbers in their place
     # however only for positive numbers and numbers within the range 1 to N
-    if nums[start] > 0 and rightIndex < len(nums) and nums[start] != nums[rightIndex]:
+    if nums[start] > 0 and rightIndex <= len(nums) and nums[start] != nums[rightIndex]:
       nums[start], nums[rightIndex] = nums[rightIndex], nums[start]
 
     else:
