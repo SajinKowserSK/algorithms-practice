@@ -31,7 +31,7 @@ def reverse_every_k_elements(head, k):
             curr.next = None
 
             # important to note that after reversing, "prev" actually becomes the tail
-            # the head/start is now reversed_head
+            # the head/start     is now reversed_head
             reversed_head = reverse(prev)
 
             if lastTail is not None:
