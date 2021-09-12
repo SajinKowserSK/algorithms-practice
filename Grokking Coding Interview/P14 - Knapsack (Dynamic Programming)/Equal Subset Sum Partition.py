@@ -33,7 +33,7 @@ def solve_recursively(dp, num, i, target):
     if dp[i][target] == -1:
 
         if num[i] <= target:
-            if solve_recursively(dp, num, i+1, target-num[i]):
+            if solve_recursively(dp, num, i+1, target-num[i]) == 1:
                 dp[i][target] = 1
                 return 1
 
