@@ -1,4 +1,4 @@
-lass Graph:
+class Graph:
     def __init__(self, Nodes, isDirected=False):
         self.nodes = Nodes
         self.adjList = {}
@@ -64,9 +64,6 @@ class Vertex:
         self.data = data
         self.state = "unvisited"
         self.neighbors = []
-
-
-def solution(N, A, B):
 
 
 def getMax(k, matrix):
