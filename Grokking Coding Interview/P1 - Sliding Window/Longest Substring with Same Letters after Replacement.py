@@ -22,3 +22,5 @@ def length_of_longest_substring(str, k):
     longest = max(longest, end_ptr - start_ptr + 1)
 
   return longest
+
+print(length_of_longest_substring("AABABBA", 1))

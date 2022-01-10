@@ -13,8 +13,10 @@ def kxk_matrix(matrix, size):
         for y in range(0, divisons):
 
             for x in range(0, len(numbers)):
+
                 curr_arr = numbers[x]
                 slice = curr_arr[side:side+size]
+                print(side, size, curr_arr, slice)
                 for num in slice:
                     sub_matrix.append(num)
 
