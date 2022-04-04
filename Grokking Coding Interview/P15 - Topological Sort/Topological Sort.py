@@ -39,14 +39,6 @@ def topological_sort(vertices, edges):
 
 
 
-
-
-
-
-
-    return sortedOrder
-
-
 def main():
     print("Topological sort: " +
           str(topological_sort(4, [[3, 2], [3, 0], [2, 0], [2, 1]])))
