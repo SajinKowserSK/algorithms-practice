@@ -108,6 +108,20 @@ class Graph:
         edge = Edge(destination, source, weight)
         self.adjList[destination].appendLeft(edge)
 
+    def P_MST(self):
+        inHeap = [False] * self.vertices
+        resultSet = [ResultSet()] * self.vertices
+        key = [0] * self.vertices
+        heapNodes = [HeapNode()] * self.vertices
+
+        for i in range(0, self.vertices):
+            heapNodes[i] = HeapNode()
+            heapNodes[i].vertex = i
+            heapNodes[i].key = math.inf
+            resultSet[i] = ResultSet()
+            resultSet[i].parent = -1
+            inHeap[i] = True
+            key[i] = math.inf
 
 
 
