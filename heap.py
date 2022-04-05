@@ -1,3 +1,7 @@
+'''
+This class is used to implement the min heap which is defined in our heap lecture notes
+SM Shahariar (Sajin) Kowser | 251014520
+'''
 import math
 class Heap:
     def __init__(self, keys, n):
