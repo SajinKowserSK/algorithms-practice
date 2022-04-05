@@ -1,5 +1,5 @@
 import math
-
+import sys
 class Heap:
     # element id = index, element key = array value
     def heap(self, keys, n):
@@ -23,7 +23,6 @@ class Heap:
         self.h = h
         self.n = n
 
-    # TODO - test this
     def in_heap(self, id):
         return id in self.h
 
@@ -81,11 +80,11 @@ class Heap:
 
 
 class Node:
-    def __init__(self, value, weight):
+    def __init__(self, value=None, weight=None):
         self.value = value
         self.weight = weight
         self.next = None
-
+        self.parent = None
 
 class Graph:
     def __init__(self, vertex_count):
@@ -103,97 +102,75 @@ class Graph:
         self.graph[end] = start_node
 
 
-        # todo - delete this is copy pasted
-        # node = Node(end, weight)
-        # node.next = self.graph[start]
-        # self.graph[start] = node
-        #
-        # # Adding the source node to the destination as
-        # # it is the undirected graph
-        # node = Node(start, weight)
-        # node.next = self.graph[end]
-        # self.graph[end] = node
-
-    # Function to print the graph TODO DELETE THIS IS COPIED AND PASTED
-    def print_graph(self):
+    # Function to print the graph
+    def print_adjencency_list(self):
+        # loop through each vertex
+        linebreak()
+        print("Printing Graph in Adjecency List Format")
         for i in range(self.vertex_count):
-            print("Adjacency list of vertex {}\n head".format(i), end="")
-            temp = self.graph[i]
-            while temp:
-                print(" -> {}".format(temp.value), end="")
-                temp = temp.next
-            print(" \n")
+            print(f"Vertex: {i}, is connected to nodes ", end="")
+            current = self.graph[i]
+            if current is not None:
+                # current = current.next
+                while current is not None:
+                    print(f"| node: {current.value}, weight: {current.weight} ", end="")
+                    current = current.next
+                print("")
+                print("")
+
 
 
     def prims_min_spaning(self):
-        heap = Heap()
+        min_heap = Heap()
 
-        max_keys = [0,0] +  [math.inf] * (self.vertex_count-1)
-
-        heap.heap(max_keys, self.vertex_count)
-
-
-        heap.decrease_key(1, 0)
+        max_keys = [0] +  [math.inf] * (self.vertex_count-1)
+        min_heap.heap(max_keys, self.vertex_count)
+        min_spanning_tree = [None] * (self.vertex_count + 1)
 
 
+        for i in range(self.vertex_count + 1):
+            min_spanning_tree[i] = Node()
+            min_spanning_tree[i].parent = None
 
-        #TODO -wtf this variable doing?
-        history = [math.inf] * (self.vertex_count+1)
-        # history[0] = 0
-        # history[1] = 0
+        min_heap.decrease_key(1, 0)
 
-        min_spanning = []
-
-        while heap.min_key() != math.inf:
-            min_weighted_node = Node(heap.min_id(), heap.min_key())
-            heap.delete_min()
-
-            min_spanning.append(min_weighted_node)
+        while min_heap.min_key() != math.inf:
+            min_weighted_node = Node(min_heap.min_id(), min_heap.min_key())
+            min_heap.delete_min()
 
 
             current = self.graph[min_weighted_node.value]
             # loop through all adjecent vertexes
             while current.next != None:
                 next = current.next
-
-                if heap.in_heap(next.value) and next.weight > min_weighted_node.weight - next.weight:
-                    # history[next.value] = next.weight
-                    # min_spanning[next.value] = next
-
-                    heap.decrease_key(next.value, next.weight)
-
+                if min_heap.in_heap(next.value):
+                    if (min_heap.key(next.value) > next.weight):
+                        min_heap.decrease_key(next.value, next.weight)
+                        min_spanning_tree[next.value].parent = min_weighted_node.value
+                        min_spanning_tree[next.value].weight = next.weight
                 current = next
 
-            # heap.delete_min()
 
-        print("history", history)
-        print("min", min_spanning)
+        # print results
+        linebreak()
+        print("Minimum Spanning Tree:")
+        print(f"Format is: (i,j) w")
+        weight = 0
+        for i in range(self.vertex_count+1):
+            if min_spanning_tree[i].parent != None:
+                print(f"({min_spanning_tree[i].parent}, {i}) {min_spanning_tree[i].weight}")
+                weight += min_spanning_tree[i].weight
 
-
-        # try to sum
-        count = 0
-        for x in min_spanning:
-            if x != -1:
-                count += x.weight
-
-        print("weight", count)
-
-
-
-
-
+        linebreak()
+        print("Minimum Spanning Tree Weight: ", weight)
 
 class Reader:
     def __init__(self, path):
-        print("aaa", path)
         with open(path) as f:
-            print("f",f)
             lines = f.readlines()
 
             vertex_count = int(lines[0])
-
             self.graph = Graph(vertex_count)
-            print("count", vertex_count)
 
             for x in range(1, len(lines)):
                 line = lines[x]
@@ -205,22 +182,41 @@ class Reader:
                 j = int(parts[1])
                 w = int(parts[2])
 
-
                 self.graph.add_edge(i, j, w)
-
 
             f.close()
 
 
-
-# p = Heap()
-# p.heap([50,20,43,11,7,5], 6)
-# print(p.min_key())
-# p.decrease_key(6, 2)
-# print(p.min_key())mes
-
-# print(p.delete_min())
-# print(p.min_key())
-
-reader = Reader("/Users/mdanics/Documents/School/3340/assignment3/mst_graph_medium.txt")
+def linebreak():
+    print("=======================================================")
+#
+reader = Reader("/Users/sajinkowser/PycharmProjects/algorithms-practice/mst_graph_medium.txt")
+reader.graph.print_adjencency_list()
 reader.graph.prims_min_spaning()
+#
+# lines = []
+# filename = sys.argv[1]
+# with open(filename) as f:
+#     lines = f.readlines()
+#
+# for x in range(0, len(lines)):
+#     lines[x] = lines[x].strip()
+#
+# graph = Graph(int(lines[0]))
+#
+# for i in range(1, len(lines)):
+#     currLine = lines[x]
+#     split = currLine.split()
+#     i = int(split[0])
+#     j = int(split[1])
+#     w = int(split[2])
+#
+#     graph.add_edge(i, j, w)
+#
+# graph.print_adjencency_list()
+# graph.prims_min_spaning()
+#
+
+
+
+
