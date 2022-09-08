@@ -6,28 +6,30 @@
 #         self.right = right
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        if root is None: 
+        if root is None:
             return 0 
         
-        maxNum = [float('-inf')]
-        currCounter = [0]
-        self.helper(root, currCounter, maxNum)
-        return maxNum[0]
+        # need to get the max number of nodes from root -> leaf 
+        currPath = [0]
+        maxPath = [float('-inf')]
+        
+        self.helper(currPath, maxPath, root)
+        return maxPath[0]
         
         
-    def helper(self, root, currCounter, maxCounter):
-        if root is None:
-            maxCounter[0] = max(maxCounter[0], currCounter[0])
+        
+    def helper(self, currPath, maxPath, root):
+        if root is None: 
+            maxPath[0] = max(maxPath[0], currPath[0])
             
         else:
-            currCounter[0] += 1 #processes current root
-            rootCounter = currCounter[0]
+            currPath[0] += 1 # add one node to path counter var for processing curr node 
+            nodeCounter = currPath[0]
             
-            self.helper(root.left, currCounter, maxCounter)
-    
-            currCounter[0] = rootCounter
+            self.helper(currPath, maxPath, root.left)
             
-            self.helper(root.right, currCounter, maxCounter)
-        
-             
-        
+            currPath[0] = nodeCounter # before sending to the right subtree, reset to the counter at this node 
+            
+            self.helper(currPath, maxPath, root.right)
+            
+            
