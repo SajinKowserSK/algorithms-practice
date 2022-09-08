@@ -6,36 +6,23 @@
 #         self.right = right
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        if root is None: 
-            return None 
+        if root is None and subRoot is None:
+            return True 
+        
+        if root:
+            if self.sameTree(root, subRoot):
+                return True 
+
+            return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
+        
+        
+    def sameTree(self, p, q):
+        if p is None and q is None:
+            return True 
+        
+        if p is not None and q is not None:
+            return (p.val == q.val and self.sameTree(p.left, q.left) and self.sameTree(p.right, q.right))
         
         else:
-            if root.val == subRoot.val:
-                if self.helper(root, subRoot): 
-                    return True 
-            
-            return True if self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot) else False 
-        
-    def helper(self, root, subRoot):
-        rList = [] 
-        sList = []
-        self.trav(root, rList)
-        self.trav(subRoot, sList)
-        
-        if len(rList) != len(sList):
             return False 
-        
-        for x in range(0, len(rList)):
-            if rList[x] != sList[x]:
-                return False 
-            
-        return True 
-    
-    def trav(self, root, lst):
-        if root is not None:
-            self.trav(root.left, lst)
-            lst.append(root.val)
-            self.trav(root.right, lst)
-            
-            
         
