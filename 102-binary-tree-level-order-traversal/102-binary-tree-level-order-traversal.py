@@ -1,4 +1,5 @@
 from collections import deque 
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -12,24 +13,28 @@ class Solution:
             return [] 
         
         lvls = [] 
-        dq = deque() 
+        dq = deque()
         dq.append(root)
         
-        while dq:
-            currLvl = []
-            for _ in range(len(dq)):
+        while dq: 
+            currLvl = [] 
+            
+            # only iterate however many nodes are in this level
+            # don't do for node in dq: as the dq will change size as we add children
+            for _ in range(0, len(dq)):
                 popped = dq.popleft()
                 currLvl.append(popped.val)
                 
-                if popped.left:
+                if popped.left is not None:
                     dq.append(popped.left)
                     
-                if popped.right:
+                if popped.right is not None:
                     dq.append(popped.right)
-                    
                     
             lvls.append(currLvl)
             
         return lvls
                 
+                
+        
         
